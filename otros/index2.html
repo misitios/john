@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Esta etiqueta le dice a Google y a los demás buscadores que NO indexen
+         ni sigan enlaces de esta página, para que no aparezca en resultados de búsqueda -->
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>SPECTHER - Agencia Web Premium</title>
+    <!-- Font Awesome para iconos corporativos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts de alta legibilidad y branding -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --text-main: #f3f4f6;
+            --text-muted: #b0a4a8;
+            
+            /* Paleta Sección 1 */
+            --bg-sec1: #100a0d;
+            --border-sec1: rgba(255, 255, 255, 0.06);
+            --s1-accent: #9f1239; 
+            --s1-gradient: linear-gradient(135deg, #9f1239, #dc6f6f);
+
+            /* Paleta Sección 2 */
+            --bg-sec2: #150c10;
+            --border-sec2: rgba(159, 18, 57, 0.15);
+            --s2-accent: #c2703d;
+            --s2-gradient: linear-gradient(135deg, #c2703d, #9f1239);
+
+            /* Paleta Sección 3 */
+            --bg-sec3: #0d0810;
+            --border-sec3: rgba(159, 18, 57, 0.15);
+            --s3-accent: #7c3aed;
+            --s3-gradient: linear-gradient(135deg, #7c3aed, #c2703d);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: #08050a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-main);
+        }
+
+        /* Contenedor Mockup Smartphone Premium */
+        .card-container {
+            background-color: var(--bg-sec1);
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            max-height: 850px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.05);
+            overflow: hidden;
+            border-radius: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        /* Panel de contenido: solo la pestaña activa es visible, sin scroll de página completa */
+        .tab-content {
+            width: 100%;
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-width: none;
+        }
+        .tab-content::-webkit-scrollbar {
+            display: none;
+        }
+        .tab-panel {
+            display: none;
+            width: 100%;
+            min-height: 100%;
+            flex-direction: column;
+        }
+        .tab-panel.active {
+            display: flex;
+            animation: panelFadeIn 0.35s ease;
+        }
+        @keyframes panelFadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Panel Perfil: breve descripción */
+        .panel-profile-desc {
+            padding: 28px 3.5%;
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+        .panel-profile-desc strong { color: #ffffff; }
+
+        /* Párrafo de trayectoria: justificado a ambos costados */
+        .profile-bio {
+            text-align: justify;
+            margin: 0 0 20px 0;
+        }
+
+        /* Lista de formación académica: justificada, numerada y organizada por renglón */
+        .profile-education {
+            list-style: decimal;
+            padding-left: 18px;
+            margin: 0 0 22px 0;
+        }
+        .profile-education li {
+            text-align: justify;
+            margin-bottom: 10px;
+            padding-left: 4px;
+        }
+        .profile-education li::marker {
+            color: var(--s1-accent);
+            font-weight: 700;
+        }
+
+        /* Firma final: nombre, cargo y empresa */
+        .profile-signature {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-sec1);
+        }
+        .sig-name {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .sig-role {
+            color: var(--s1-accent);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .sig-company {
+            color: var(--text-muted);
+            font-size: 11px;
+        }
+
+        /* ==========================================================================
+           SECCIÓN 2: SOLUCIONES EMPRESARIALES (6 Tarjetas Originales)
+           ========================================================================== */
+        .section-services {
+            background-color: var(--bg-sec2);
+            width: 100%;
+            padding: 40px 0 35px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 1px solid var(--border-sec2);
+        }
+
+        .section-title {
+            align-self: flex-start;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            margin-left: 3.5%;
+            margin-bottom: 35px; 
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+        }
+        .title-s2::after { background: var(--s2-gradient); }
+        .title-s3::after { background: var(--s3-gradient); }
+
+        .stage-3d-horiz {
+            width: 100%;
+            height: 310px;
+            perspective: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .carousel-3d-original {
+            width: 280px;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .service-card-original {
+            position: absolute;
+            width: 280px;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: linear-gradient(145deg, rgba(20,22,33,0.95) 0%, rgba(10,11,16,0.98) 100%);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            backface-visibility: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .node-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 12px;
+        }
+        .node-header i {
+            font-size: 20px;
+            background: var(--s2-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .node-header h3 { font-size: 14px; color: #ffffff; font-weight: 700; }
+
+        .node-desc-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        .node-desc-item i { color: var(--s2-accent); margin-top: 3px; font-size: 10px; }
+
+        /* ==========================================================================
+           SECCIÓN 3: ECOSISTEMA DE PROYECTOS (8 Monitores Mac de Alta Resolución)
+           ========================================================================== */
+        .section-portfolio {
+            background-color: var(--bg-sec3);
+            width: 100%;
+            padding: 40px 0 35px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 1px solid var(--border-sec3);
+        }
+
+        .stage-widescreen {
+            width: 100%;
+            height: 240px;
+            perspective: 1200px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .portfolio-book-container {
+            width: 320px; 
+            height: 190px;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .monitor-frame {
+            position: absolute;
+            width: 320px;
+            height: 185px;
+            background: #090c10;
+            border: 4px solid #1f242e; 
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            backface-visibility: hidden;
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s;
+        }
+
+        .monitor-top-bar {
+            width: 100%;
+            background: #161b22;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .browser-dots {
+            display: flex;
+            gap: 4px;
+        }
+        .browser-dots span {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .monitor-url-input {
+            background: #0d1117;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 4px;
+            font-size: 8px;
+            color: var(--s3-accent);
+            padding: 1px 8px;
+            width: 180px;
+            font-family: monospace;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        /* Contenedor optimizado de alta resolución estilo Mac Grande */
+        .monitor-web-content {
+            flex: 1;
+            padding: 12px 10px;
+            background: radial-gradient(circle at top right, #0e1420, #040608);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .web-hero-layout {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .web-brand {
+            font-size: 11px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+        .web-brand span {
+            display: block;
+            font-size: 8px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-top: 1px;
+        }
+        .web-badge-status {
+            font-size: 7px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--s3-accent);
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-weight: 600;
+            border: 1px solid rgba(16, 185, 129, 0.15);
+        }
+
+        .web-sections-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            margin: 6px 0;
+        }
+        .web-block-element {
+            background: rgba(255,255,255,0.01);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 6px;
+            padding: 6px 4px;
+            text-align: center;
+        }
+        .web-block-element i { font-size: 10px; color: var(--s3-accent); margin-bottom: 3px;}
+        .web-block-element div { font-size: 8px; font-weight: 600; color: #fff; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+        .web-block-element span { font-size: 6.5px; color: var(--text-muted); display: block;}
+
+        .web-footer-tags {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.03);
+            padding-top: 5px;
+            font-size: 7.5px;
+            color: var(--text-muted);
+        }
+
+        .monitor-stand {
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 8px;
+            background: #1f242e;
+            border-radius: 2px;
+            z-index: -1;
+        }
+
+        /* ==========================================================================
+           SECCIÓN 4: FORMULARIO DE CONTACTO PREMIUM (Ley Colombiana)
+           ========================================================================== */
+        .section-form {
+            background-color: var(--bg-sec1);
+            width: 100%;
+            padding: 32px 3.5% 24px 3.5%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-title {
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            position: relative;
+        }
+        .form-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--s1-gradient);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .input-group label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .input-group input, .input-group textarea {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-sec1);
+            border-radius: 12px;
+            padding: 12px 14px;
+            color: #ffffff;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .input-group input:focus, .input-group textarea:focus {
+            border-color: var(--s1-accent);
+        }
+
+        .policy-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 4px;
+        }
+        .policy-group input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--s1-accent);
+            cursor: pointer;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .policy-group label {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .btn-submit {
+            background: var(--s1-gradient);
+            border: none;
+            border-radius: 14px;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 14px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(159, 18, 57, 0.25);
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+        .btn-submit:active { transform: scale(0.97); }
+        .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .form-msg {
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            min-height: 16px;
+            margin-top: 4px;
+        }
+
+        /* ==========================================================================
+           FILA DE CONVERSIÓN (primera fila, fija en la parte superior)
+           ========================================================================== */
+        .call-consult-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            padding: 14px 0 16px 0;
+            margin-bottom: 6px;
+            border-bottom: 1px solid var(--border-sec1);
+        }
+
+        .fixed-btn {
+            height: 44px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 11.5px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 14px;
+            transition: transform 0.2s;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+
+        .btn-call {
+            background: linear-gradient(135deg, #161925, #0f111a);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .btn-call i { color: var(--s1-accent); }
+        .fixed-btn:active { transform: scale(0.96); }
+
+        .btn-chat {
+            background: var(--s1-gradient);
+        }
+
+        /* ==========================================================================
+           BARRA SUPERIOR FIJA (Header + Navegación tipo App Nativa)
+           Queda SIEMPRE fija arriba: no está dentro del área con scroll (.tab-content),
+           así que nunca se mueve. "position: sticky" es un refuerzo extra de seguridad.
+           El padding lateral está en PORCENTAJE (no en píxeles) para que el margen a los
+           costados se vea proporcional en cualquier tamaño de pantalla.
+           ========================================================================== */
+        .top-app-bar {
+            width: 100%;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: var(--bg-sec1);
+            border-bottom: 1px solid var(--border-sec1);
+            padding-left: 3.5%;
+            padding-right: 3.5%;
+            animation: barFadeDown 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        @keyframes barFadeDown {
+            from { opacity: 0; transform: translateY(-14px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Sección Imagen + Datos: ampliada 80% más y diferenciada como recuadro propio
+           (fondo gris neutro, bordes redondeados y una línea decorativa superior) */
+        .top-bar-main {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 14px 0 18px 0;
+            padding: 22px 18px;
+            background: linear-gradient(150deg, #1a1015, #100a0d);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 26px;
+            box-shadow: 0 14px 30px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
+            position: relative;
+            overflow: hidden;
+        }
+        /* Línea decorativa superior que diferencia el recuadro del resto */
+        .top-bar-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 18px;
+            right: 18px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.35), rgba(255,255,255,0));
+        }
+
+        .top-bar-avatar {
+            flex-shrink: 0;
+            width: 146px;
+            height: 146px;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+            background-color: #1f2937;
+        }
+        .top-bar-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 40% 20%;
+        }
+
+        .top-bar-identity {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+        }
+        .top-bar-brand {
+            font-family: 'Comfortaa', cursive;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .top-bar-name {
+            font-size: 27px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+        }
+        .top-bar-role {
+            color: var(--s1-accent);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-top: 5px;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .top-bar-nav {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 0 14px 0;
+        }
+        .nav-btn {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            text-decoration: none;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-sec1);
+            border-radius: 14px;
+            padding: 8px 2px;
+            font-size: 9.5px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            transition: transform 0.2s, color 0.2s, border-color 0.2s, background 0.2s;
+            cursor: pointer;
+        }
+        .nav-btn i { font-size: 21px; color: var(--s1-accent); }
+        .nav-btn:active { transform: scale(0.94); }
+        .nav-btn.active {
+            color: #ffffff;
+            border-color: var(--s1-accent);
+            background: rgba(159, 18, 57, 0.12);
+        }
+        .nav-btn-contact i { color: var(--s2-accent); }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+
+        <!-- BARRA SUPERIOR FIJA: Conversión + Imagen/Identidad + Pestañas -->
+        <div class="top-app-bar">
+
+            <!-- Fila de conversión (antes al final de la página, ahora primera fila fija) -->
+            <div class="call-consult-row">
+                <a href="tel:+573024196999" class="fixed-btn btn-call">
+                    <i class="fa-solid fa-phone-flip"></i>
+                    Llamar
+                </a>
+                <a href="https://wa.me/573024196999" target="_blank" class="fixed-btn btn-chat">
+                    <i class="fa-solid fa-circle-nodes"></i>
+                    Consultoría
+                </a>
+            </div>
+
+            <div class="top-bar-main">
+                <div class="top-bar-avatar">
+                    <img src="imagen1.jpg" alt="John Garzón">
+                </div>
+                <div class="top-bar-identity">
+                    <div class="top-bar-brand">Specther Group</div>
+                    <h1 class="top-bar-name">John Garzón</h1>
+                    <p class="top-bar-role">Director de Tecnología</p>
+                </div>
+            </div>
+
+            <nav class="top-bar-nav">
+                <a href="#" data-tab="panel-services" class="nav-btn active">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Soluciones</span>
+                </a>
+                <a href="#" data-tab="panel-portfolio" class="nav-btn">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Proyectos</span>
+                </a>
+                <a href="#" data-tab="panel-profile" class="nav-btn">
+                    <i class="fa-solid fa-id-badge"></i>
+                    <span>Perfil</span>
+                </a>
+                <a href="#" data-tab="panel-contact" class="nav-btn nav-btn-contact">
+                    <i class="fa-solid fa-headset"></i>
+                    <span>Contacto</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="tab-content">
+
+            <!-- PESTAÑA PERFIL -->
+            <div class="tab-panel" id="panel-profile">
+                <div class="panel-profile-desc">
+
+                    <p class="profile-bio">
+                        Director con más de diez años de trayectoria en el gremio de la seguridad informática y el desarrollo de aplicaciones a la medida, con experiencia como líder de equipo e interventor tecnológico de proyectos para multinacionales en Colombia y Suramérica.
+                    </p>
+
+                    <ol class="profile-education">
+                        <li>Ingeniero de Sistemas en la Universidad Javeriana.</li>
+                        <li>Maestría en Seguridad Informática en la Universidad de Harvard.</li>
+                        <li>Diplomado en Análisis de Datos en el MIT.</li>
+                        <li>Diplomado en Desarrollo de Aplicaciones en Google.</li>
+                        <li>Ingeniero Junior en Desarrollo sobre entornos Linux, inicio de su carrera profesional.</li>
+                    </ol>
+
+                    <div class="profile-signature">
+                        <span class="sig-name">John Garzón</span>
+                        <span class="sig-role">Director de Tecnología (CTO)</span>
+                        <span class="sig-company">Specther Group</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- PESTAÑA SOLUCIONES: SOLUCIONES EMPRESARIALES (6 Tarjetas) -->
+            <div class="tab-panel active" id="panel-services">
+            <section class="section-services" id="section-services">
+                <h2 class="section-title title-s2">Soluciones Globales</h2>
+                
+                <div class="stage-3d-horiz">
+                    <div class="carousel-3d-original" id="carousel-serv-original">
+                        <div class="service-card-original">
+                            <div class="node-header"><i class="fa-solid fa-brain"></i><h3>Ingeniería de IA</h3></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Modelos Fundacionales & LLMs Corporativos.</span></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Agentes de automatización de flujos B2B.</span></div>
+                        </div>
+                        <div class="service-card-original">
+                            <div class="node-header"><i class="fa-solid fa-code"></i><h3>Desarrollo Frontend</h3></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Estructuras robustas bajo metodología BEM CSS.</span></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Optimización milimétrica Core Web Vitals.</span></div>
+                        </div>
+                        <div class="service-card-original">
+                            <div class="node-header"><i class="fa-solid fa-shield-cat"></i><h3>Ciberseguridad</h3></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Hacking Ético preventivo y análisis perimetral.</span></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Arquitecturas seguras basadas en Zero-Trust.</span></div>
+                        </div>
+                        <div class="service-card-original">
+                            <div class="node-header"><i class="fa-solid fa-cloud"></i><h3>Cloud & DevOps</h3></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Infraestructura elástica de alta disponibilidad.</span></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Despliegues automatizados mediante CI/CD.</span></div>
+                        </div>
+                        <div class="service-card-original">
+                            <div class="node-header"><i class="fa-solid fa-chart-line"></i><h3>Data Analytics</h3></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Procesamiento de datos a gran escala.</span></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Dashboards predictivos para decisiones TI.</span></div>
+                        </div>
+                        <div class="service-card-original">
+                            <div class="node-header"><i class="fa-solid fa-mobile-button"></i><h3>Mobile Compilations</h3></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Empaquetado de código HTML a entornos Android.</span></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Distribución óptima de instalables ligeros.</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </div>
+
+            <!-- PESTAÑA PROYECTOS: ECOSISTEMA DE PROYECTOS (8 Monitores Mac de Alta Resolución Estables) -->
+            <div class="tab-panel" id="panel-portfolio">
+            <section class="section-portfolio" id="section-portfolio">
+                <h2 class="section-title title-s3">Ecosistema Proyectos</h2>
+                
+                <div class="stage-widescreen">
+                    <div class="portfolio-book-container" id="portfolio-monitors">
+                        
+                        <!-- P1: Expansiva -->
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://expansiva.com</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">Expansiva UI <span>Plataforma Real Estate Guarantor</span></div>
+                                    <span class="web-badge-status">Live</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-solid fa-calculator"></i><div>Calculadora</div><span>Exacta</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-bolt"></i><div>Core Vitals</div><span>&lt; 50ms</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-user-shield"></i><div>Fianza digital</div><span>Garantizada</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>Next.js + Tailwind</span><span>v2.4</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                        <!-- P2: Amero -->
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://amero.com</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">AMERO App <span>Dark Kitchen Tradicional</span></div>
+                                    <span class="web-badge-status">Production</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-solid fa-utensils"></i><div>Menú Digital</div><span>Auto-update</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-truck-ramp-box"></i><div>Logística</div><span>Dark Kitchen</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-mobile-screen"></i><div>PWA Engine</div><span>100% Native</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>React + CSS BEM</span><span>v1.2</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                        <!-- P3: Don Chori -->
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://donchori.com</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">Don Chori POS <span>Control Comercial Multi-Punto</span></div>
+                                    <span class="web-badge-status">Active</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-solid fa-shop"></i><div>5 Puntos</div><span>Valledupar</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-hand-holding-dollar"></i><div>Comisiones</div><span>Realtime</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-tags"></i><div>Precio Fijo</div><span>$5,000 COP</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>Vue.js + Node.js</span><span>v4.0</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                        <!-- P4: Asesorias Legales -->
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://asesoriaslegales.com</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">Legales Network <span>Ecosistema de Asesorias Legales</span></div>
+                                    <span class="web-badge-status">Staging</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-solid fa-file-signature"></i><div>Intake Form</div><span>No Docs Required</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-hourglass-start"></i><div>Estudio Eficiente</div><span>Aprobación</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-building-shield"></i><div>Asesoría Jurídica</div><span>Respaldo Total</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>Angular + Go</span><span>v0.9</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                        <!-- P5: Specther Labs -->
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://specther.com</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">Specther Lab <span>Agencia de Cómputo Avanzado</span></div>
+                                    <span class="web-badge-status">Online</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-solid fa-cube"></i><div>Web 3D</div><span>GPU WebGL</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-network-wired"></i><div>Infraestructura</div><span>Edge Nodes</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-microchip"></i><div>Core AI</div><span>Custom LLM</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>Vanilla JS + CSS</span><span>v3.1</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                        <!-- P6: Android Compiler -->
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://htmltoapk.com</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">APK Compiler <span>Conversor de Proyectos Web</span></div>
+                                    <span class="web-badge-status">Beta</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-brands fa-android"></i><div>HTML a APK</div><span>Empaquetado</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-box-archive"></i><div>Zip Upload</div><span>Compilación</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-download"></i><div>Descarga</div><span>Instalable</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>Electron + Rust</span><span>v1.0</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                        <!-- P7: Zero Shield -->
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://zeroshield.io</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">Zero Shield <span>Autenticación e Identidad</span></div>
+                                    <span class="web-badge-status">Secure</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-solid fa-key"></i><div>OAuth3</div><span>Decentralized</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-fingerprint"></i><div>Biometría</div><span>WebAuthn API</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-clock-rotate-left"></i><div>Logs</div><span>Auditoría</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>Go + WebAssembly</span><span>v2.0</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                        <!-- P8: StreamFlow -->
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://streamflow.dev</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">StreamFlow <span>Procesamiento de Eventos</span></div>
+                                    <span class="web-badge-status">Active</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-solid fa-database"></i><div>ETL Engine</div><span>Auto-mapping</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-wave-square"></i><div>Kafka Stream</div><span>Low Latency</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-chart-pie"></i><div>Análisis</div><span>Predictivo</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>Python + Kafka</span><span>v1.5</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            </div>
+
+            <!-- PESTAÑA CONTACTO: FORMULARIO DE CONTACTO (Estilo Premium con Normativa de Colombia) -->
+            <div class="tab-panel" id="panel-contact">
+            <section class="section-form" id="section-form">
+                <h2 class="form-title">Iniciar Consultoría</h2>
+
+                <!--
+                    ENVÍO AUTOMÁTICO DE CORREO (sin necesidad de servidor propio):
+                    Se usa el servicio gratuito FormSubmit.co, que recibe los datos del
+                    formulario y los reenvía por correo a specther@gmail.com.
+
+                    Este formulario usa el envío CLÁSICO de FormSubmit (el método oficial
+                    y más confiable): el navegador envía los datos directamente, sin
+                    necesidad de JavaScript, así que siempre funciona en cualquier
+                    navegador una vez el sitio esté publicado en un hosting real (http/https).
+
+                    IMPORTANTE (una sola vez): la PRIMERA vez que alguien llene y envíe
+                    este formulario, FormSubmit enviará un correo de confirmación a
+                    specther@gmail.com pidiendo activar el buzón. Hay que abrir ese
+                    correo y hacer clic en "Activate" / "Confirmar". Después de eso,
+                    todos los siguientes formularios llegarán automáticamente, sin
+                    pasos adicionales.
+
+                    Nota: para que funcione, el archivo debe abrirse desde una dirección
+                    web real (https://tudominio.com), no abriendo el archivo directamente
+                    desde el computador (doble clic). Esa es la causa más común de que
+                    "no funcione" al probarlo.
+                -->
+                <form class="contact-form" id="contact-form" action="https://formsubmit.co/specther@gmail.com" method="POST">
+
+                    <!-- Configuración del correo que recibe Specther (no se muestran al visitante) -->
+                    <input type="hidden" name="_subject" value="Nueva solicitud de consultoría — Specther">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <!-- _next: a dónde vuelve la persona después de enviar. Se completa
+                         automáticamente con la dirección real del sitio (ver script al final). -->
+                    <input type="hidden" name="_next" id="form-next" value="">
+
+                    <div class="input-group">
+                        <label for="txt-name">Nombre Completo</label>
+                        <input type="text" id="txt-name" name="Nombre completo" placeholder="Ej. Carlos Mendoza" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="txt-phone">Celular / WhatsApp</label>
+                        <input type="tel" id="txt-phone" name="Celular / WhatsApp" placeholder="Ej. 300 123 4567" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="txt-email">Correo Electrónico</label>
+                        <input type="email" id="txt-email" name="Correo electrónico" placeholder="carlos@empresa.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="txt-subject">Asunto</label>
+                        <textarea id="txt-subject" name="Asunto" rows="3" placeholder="Describe brevemente los requisitos de tu proyecto..." required></textarea>
+                    </div>
+
+                    <div class="policy-group">
+                        <input type="checkbox" id="chk-policy" required>
+                        <label for="chk-policy">
+                            Autorizo el tratamiento de mis datos de acuerdo con la norma colombiana de protección de datos (Ley 1581 de 2012).
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Enviar Solicitud</button>
+
+                    <!-- Mensaje de éxito que se muestra al volver del envío -->
+                    <p id="form-msg" class="form-msg"></p>
+                </form>
+            </section>
+            </div>
+
+        </div> <!-- Fin tab-content -->
+
+
+    </div>
+
+    <!-- Scripts Cinemáticos Tridimensionales Estables -->
+    <script>
+        // 0. NAVEGACIÓN POR PESTAÑAS: solo un panel visible a la vez, sin scroll de página completa
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+        const tabContent = document.querySelector('.tab-content');
+
+        navButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = btn.getAttribute('data-tab');
+
+                navButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                tabPanels.forEach(panel => {
+                    panel.classList.toggle('active', panel.id === targetId);
+                });
+
+                tabContent.scrollTop = 0;
+            });
+        });
+
+        // 0.1 FORMULARIO DE CONTACTO: envío automático a specther@gmail.com
+        // El formulario se envía de forma clásica (sin fetch/AJAX) porque es el
+        // método oficial y más confiable de FormSubmit: nunca falla por temas de
+        // CORS ni de navegador. Aquí solo hacemos dos cosas sencillas:
+        //   1) Completar automáticamente a dónde debe volver la persona después
+        //      de enviar (la misma página, con "?enviado=1" al final).
+        //   2) Si la página carga con "?enviado=1" en la dirección, mostrar el
+        //      mensaje de éxito dentro de la pestaña de Contacto.
+        const contactForm = document.getElementById('contact-form');
+        const formMsg = document.getElementById('form-msg');
+        const formNextField = document.getElementById('form-next');
+
+        if (contactForm && formNextField) {
+            const baseUrl = window.location.href.split('?')[0].split('#')[0];
+            formNextField.value = baseUrl + '?enviado=1';
+
+            contactForm.addEventListener('submit', function () {
+                const submitBtn = contactForm.querySelector('.btn-submit');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Enviando...';
+                // No se usa preventDefault(): el formulario SÍ se envía normalmente.
+            });
+        }
+
+        // Si volvemos de un envío exitoso, mostrar el mensaje y abrir la pestaña Contacto
+        if (window.location.search.includes('enviado=1')) {
+            navButtons.forEach(b => b.classList.remove('active'));
+            tabPanels.forEach(p => p.classList.remove('active'));
+            document.querySelector('[data-tab="panel-contact"]').classList.add('active');
+            document.getElementById('panel-contact').classList.add('active');
+
+            if (formMsg) {
+                formMsg.textContent = '¡Solicitud enviada con éxito! Te contactaremos pronto.';
+                formMsg.style.color = 'var(--s3-accent)';
+            }
+            // Limpiar la dirección para que no diga "?enviado=1" si la persona la comparte
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        // 1. CAROUSEL ORIGINAL DE SERVICIOS (6 elementos, paso de 60 grados)
+        const servCarousel = document.getElementById('carousel-serv-original');
+        const servCards = servCarousel.children;
+        const totalServs = servCards.length;
+        let servIndex = 0;
+        
+        const radiusServ = 140; 
+        const angleStepServ = 360 / totalServs; 
+
+        function updateServCarousel() {
+            for (let i = 0; i < totalServs; i++) {
+                let relativeAngle = angleStepServ * (i - servIndex);
+                servCards[i].style.transform = `rotateY(${relativeAngle}deg) translateZ(${radiusServ}px)`;
+                
+                if (i === servIndex) {
+                    servCards[i].style.opacity = '1';
+                    servCards[i].style.visibility = 'visible';
+                    servCards[i].style.pointerEvents = 'auto';
+                } else {
+                    servCards[i].style.opacity = '0.15';
+                    servCards[i].style.visibility = 'visible';
+                    servCards[i].style.pointerEvents = 'none';
+                }
+            }
+        }
+
+        // 2. CAROUSEL DE MONITORES EN PERSPECTIVA ASIMÉTRICA (8 elementos)
+        const monitorContainer = document.getElementById('portfolio-monitors');
+        const monitors = monitorContainer.children;
+        const totalMonitors = monitors.length;
+        let monitorIndex = 0;
+
+        function updateMonitorFly() {
+            for (let i = 0; i < totalMonitors; i++) {
+                if (i === monitorIndex) {
+                    // Monitor central en foco
+                    monitors[i].style.transform = `translate3d(0, 0, 30px) rotateY(0deg)`;
+                    monitors[i].style.opacity = '1';
+                    monitors[i].style.visibility = 'visible';
+                    monitors[i].style.zIndex = '10';
+                    monitors[i].style.pointerEvents = 'auto';
+                } else if (i === (monitorIndex + 1) % totalMonitors) {
+                    // Siguiente (Derecha al fondo)
+                    monitors[i].style.transform = `translate3d(50px, 0, -80px) rotateY(-35deg)`;
+                    monitors[i].style.opacity = '0.25';
+                    monitors[i].style.visibility = 'visible';
+                    monitors[i].style.zIndex = '5';
+                    monitors[i].style.pointerEvents = 'none';
+                } else if (i === (monitorIndex - 1 + totalMonitors) % totalMonitors) {
+                    // Previo (Izquierda al fondo)
+                    monitors[i].style.transform = `translate3d(-50px, 0, -80px) rotateY(35deg)`;
+                    monitors[i].style.opacity = '0.25';
+                    monitors[i].style.visibility = 'visible';
+                    monitors[i].style.zIndex = '4';
+                    monitors[i].style.pointerEvents = 'none';
+                } else {
+                    // Ocultos en el entorno virtual
+                    monitors[i].style.transform = `translate3d(0, 0, -200px)`;
+                    monitors[i].style.opacity = '0';
+                    monitors[i].style.visibility = 'hidden';
+                    monitors[i].style.zIndex = '1';
+                    monitors[i].style.pointerEvents = 'none';
+                }
+            }
+        }
+
+        function cycleElements() {
+            servIndex = (servIndex + 1) % totalServs;
+            updateServCarousel();
+        }
+
+        function cycleMonitors() {
+            monitorIndex = (monitorIndex + 1) % totalMonitors;
+            updateMonitorFly();
+        }
+
+        // Ejecución y Loops
+        updateServCarousel();
+        updateMonitorFly();
+        
+        setInterval(cycleElements, 3500);
+        setInterval(cycleMonitors, 4500);
+    </script>
+</body>
+</html>
