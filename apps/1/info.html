@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>SPECTHER - Documentación Interna</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+    body {
+        background: #020204;
+        color: #f3f4f6;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        padding: 40px 16px;
+    }
+    .wrap { width: 100%; max-width: 760px; }
+
+    /* --- Pantalla de acceso --- */
+    #gate {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        text-align: center;
+    }
+    #gate h1 { font-size: 18px; letter-spacing: 1px; }
+    #gate p { color: #9ca3af; font-size: 13px; max-width: 380px; }
+    #gate input {
+        width: 260px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.03);
+        color: #fff;
+        font-size: 14px;
+        outline: none;
+        text-align: center;
+    }
+    #gate button {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        color: #fff;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    #gate-error { color: #f87171; font-size: 12px; min-height: 16px; }
+
+    /* --- Documentación --- */
+    #doc { display: none; }
+    h1.title { font-size: 20px; margin-bottom: 4px; }
+    .sub { color: #9ca3af; font-size: 12px; margin-bottom: 28px; }
+    h2 {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #06b6d4;
+        margin: 34px 0 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        padding-bottom: 8px;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 6px; }
+    td { padding: 7px 8px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
+    td:first-child { color: #10b981; font-family: monospace; white-space: nowrap; width: 110px; font-weight: 700; }
+    td:last-child { color: #d1d5db; }
+    .note {
+        margin-top: 40px;
+        font-size: 12px;
+        color: #9ca3af;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 10px;
+        padding: 14px 16px;
+        line-height: 1.6;
+    }
+    code { color: #f3f4f6; background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+    <div id="gate">
+        <h1>Documentación interna — Specther</h1>
+        <p>Este archivo contiene el mapa de líneas de código de index.html. Ingresa el usuario y la contraseña para verlo.</p>
+        <input type="email" id="gate-user" placeholder="Usuario (correo)" autocomplete="off">
+        <input type="password" id="gate-pass" placeholder="Contraseña" autocomplete="off">
+        <button id="gate-btn">Entrar</button>
+        <p id="gate-error"></p>
+    </div>
+
+    <div id="doc">
+        <h1 class="title">Mapa de código — index.html</h1>
+        <p class="sub">Referencia de líneas exactas del archivo final (index.html limpio). Si vuelves a editar el archivo y agregas o quitas líneas, estos números se corren.</p>
+
+        <h2>Estructura general</h2>
+        <table>
+            <tr><td>Línea 13</td><td>Apertura de &lt;style&gt; — inicio de todo el CSS del sitio.</td></tr>
+            <tr><td>Línea 14</td><td>Bloque :root — variables de color de las 3 paletas (secciones 1, 2 y 3).</td></tr>
+            <tr><td>Línea 45</td><td>Imagen de fondo del sitio (background-image), usa el archivo <code>fondo-specther.jpg</code>.</td></tr>
+            <tr><td>Línea 58</td><td>.card-container — el "mockup" tipo celular que envuelve todo el sitio (aquí vive también la barra inferior fija).</td></tr>
+            <tr><td>Línea 877</td><td>Cierre de &lt;/style&gt;.</td></tr>
+            <tr><td>Línea 879</td><td>&lt;body&gt; — trae la clase intro-playing, que activa las animaciones de entrada.</td></tr>
+        </table>
+
+        <h2>Cabecera (imagen y nombre, arriba)</h2>
+        <table>
+            <tr><td>Línea 709</td><td>CSS .top-app-bar — la barra fija de arriba (no se mueve con el scroll).</td></tr>
+            <tr><td>Línea 883</td><td>HTML — apertura de la barra superior (.top-app-bar).</td></tr>
+            <tr><td>Línea 885</td><td>Fila de botones "Llamar" y "Consultoría" (.call-consult-row).</td></tr>
+            <tr><td>Línea 897</td><td>Imagen circular principal (foto de perfil) — .top-bar-avatar.</td></tr>
+            <tr><td>Línea 900</td><td>Bloque de datos: marca, nombre y cargo ("Gerente de Proyectos") — .top-bar-identity.</td></tr>
+        </table>
+
+        <h2>Barra de navegación inferior (estilo WhatsApp, fija abajo)</h2>
+        <table>
+            <tr><td>Línea 809</td><td>CSS .bottom-nav — barra fija en la parte inferior de la pantalla, con posición absolute y bottom: 0 dentro del mockup.</td></tr>
+            <tr><td>Línea 823</td><td>CSS .nav-btn — cada uno de los 4 botones (ícono + texto), todos con flex: 1 para repartir la pantalla en 4 secciones iguales.</td></tr>
+            <tr><td>Línea 832</td><td>CSS .nav-btn i — tamaño del ícono, 25px (más grande que el texto, igual que en WhatsApp).</td></tr>
+            <tr><td>Línea 1393</td><td>HTML — apertura de &lt;nav class="bottom-nav"&gt;, con los 4 botones: Soluciones, Proyectos, Perfil, Contacto (en ese orden, de izquierda a derecha).</td></tr>
+        </table>
+
+        <h2>Pestaña Perfil</h2>
+        <table>
+            <tr><td>Línea 910</td><td>Apertura del panel de Perfil (id="panel-profile").</td></tr>
+            <tr><td>Línea 913</td><td>Firma superior: nombre, cargo ("Gerente de Proyectos") y empresa — .profile-signature.</td></tr>
+            <tr><td>Línea 99</td><td>CSS .profile-grid — la cuadrícula de 2x2 secciones cuadradas.</td></tr>
+            <tr><td>Línea 919</td><td>HTML de la cuadrícula (id="profile-grid") con los 4 botones: ¿Quién Soy?, Formación Académica, Experiencia, Foros — cada uno con su ícono.</td></tr>
+            <tr><td>Línea 169</td><td>CSS .profile-detail — la vista de detalle que se despliega al tocar una casilla de la cuadrícula (oculta la cuadrícula y muestra el contenido, con botón "Volver").</td></tr>
+            <tr><td>Línea 937</td><td>Detalle 1 (id="detail-who") — Resumen Ejecutivo, Fortalezas Clave, Resultados Destacados, Reconocimientos y Certificaciones.</td></tr>
+            <tr><td>Línea 981</td><td>Detalle 2 (id="detail-education") — línea de tiempo de Formación Académica (2015 a 2024).</td></tr>
+            <tr><td>Línea 1020</td><td>Detalle 3 (id="detail-experience") — línea de tiempo de Experiencia (4 cargos, cada uno se expande al tocarlo).</td></tr>
+            <tr><td>Línea 1086</td><td>Detalle 4 (id="detail-forums") — tarjetas de foros y asociaciones (PMI Global Summit, GPMF, The PMO Conference, IASP).</td></tr>
+            <tr><td>Línea 256</td><td>CSS .timeline — la línea vertical central y las tarjetas alternadas izquierda/derecha (usada en Formación Académica y Experiencia).</td></tr>
+        </table>
+
+        <h2>Pestaña Soluciones (carrusel de 6 tarjetas)</h2>
+        <table>
+            <tr><td>Línea 320</td><td>CSS .section-services — fondo y espaciado de la sección.</td></tr>
+            <tr><td>Línea 1124</td><td>Apertura del panel Soluciones (id="panel-services").</td></tr>
+            <tr><td>Línea 1129</td><td>Contenedor 3D del carrusel de servicios (id="carousel-serv-original") — aquí están las 6 tarjetas (IA, Frontend, Ciberseguridad, Cloud, Data Analytics, Mobile).</td></tr>
+        </table>
+
+        <h2>Pestaña Proyectos (carrusel de 8 monitores)</h2>
+        <table>
+            <tr><td>Línea 414</td><td>CSS .section-portfolio — fondo y espaciado de la sección.</td></tr>
+            <tr><td>Línea 1165</td><td>Apertura del panel Proyectos (id="panel-portfolio").</td></tr>
+            <tr><td>Línea 1170</td><td>Contenedor de los 8 "monitores" (id="portfolio-monitors"): Expansiva, Amero, Don Chori, Asesorías Legales, Specther Labs, Android Compiler, Zero Shield, StreamFlow — en ese orden, uno debajo del otro dentro del mismo bloque.</td></tr>
+        </table>
+
+        <h2>Pestaña Contacto (formulario)</h2>
+        <table>
+            <tr><td>Línea 567</td><td>CSS .section-form — estilos del formulario.</td></tr>
+            <tr><td>Línea 1345</td><td>Apertura del panel Contacto (id="panel-contact").</td></tr>
+            <tr><td>Línea 1349</td><td>Etiqueta &lt;form id="contact-form"&gt; — envía los datos a FormSubmit (correo automático), incluye Nombre, Celular, Correo, Asunto y checkbox de autorización de datos (Ley 1581 de 2012).</td></tr>
+        </table>
+
+        <h2>Animaciones de entrada</h2>
+        <table>
+            <tr><td>Línea 850</td><td>@keyframes: revealSpin (giro de la foto), revealLeft / revealRight (aparición lateral), revealUp (aparición de abajo hacia arriba). También la usa .profile-detail al desplegarse.</td></tr>
+            <tr><td>Línea 1414</td><td>JS: a los 1.8 segundos se quita la clase intro-playing, así las animaciones de entrada corren una sola vez (no se repiten al cambiar de pestaña).</td></tr>
+        </table>
+
+        <h2>JavaScript (parte final del archivo)</h2>
+        <table>
+            <tr><td>Línea 1414</td><td>Apertura de &lt;script&gt;.</td></tr>
+            <tr><td>Línea 1424</td><td>Funciones showProfileDetail / showProfileGrid — muestran u ocultan la cuadrícula de Perfil y sus 4 detalles.</td></tr>
+            <tr><td>Línea 1440-1448</td><td>Clic en las tarjetas de la línea de tiempo (Formación y Experiencia) para expandir/contraer la descripción.</td></tr>
+            <tr><td>Línea 1450-1459</td><td>IntersectionObserver — anima cada punto de la línea de tiempo apareciendo de izquierda o derecha al hacer scroll.</td></tr>
+            <tr><td>Línea 1461-1477</td><td>Navegación entre pestañas (clic en los 4 botones de la barra inferior).</td></tr>
+            <tr><td>Línea 1479-1505</td><td>Lógica del formulario de contacto: deshabilita el botón al enviar y muestra el mensaje de éxito al volver.</td></tr>
+            <tr><td>Línea 1507-1530</td><td>Carrusel 3D de Soluciones (rota las 6 tarjetas).</td></tr>
+            <tr><td>Línea 1532-1565</td><td>Carrusel de Proyectos (efecto de monitores en perspectiva).</td></tr>
+            <tr><td>Línea 1567-1581</td><td>Funciones que avanzan ambos carruseles automáticamente: Soluciones cada 3.5s, Proyectos cada 4.5s.</td></tr>
+        </table>
+
+        <div class="note">
+            Este archivo (info.html) es solo para referencia interna: no debe subirse al hosting público junto con index.html, ya que no aporta nada al visitante y solo ocupa espacio. Si haces cambios grandes en index.html (agregar o quitar líneas), estos números de línea se corren y hay que volver a ubicarlos con Ctrl+F buscando por el nombre de clase (ej. <code>top-bar-avatar</code>) en vez de por número.
+        </div>
+    </div>
+
+</div>
+
+<script>
+    async function sha256(text) {
+        const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+        return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    const STORED_USER = 'xpecther@gmail.com';
+    const STORED_HASH = 'f252ca5a3225cc1bc8ee1e829fee255b79b2e39c71dc484c4155c65737c48721';
+    const userInput = document.getElementById('gate-user');
+    const passInput = document.getElementById('gate-pass');
+    const errorMsg = document.getElementById('gate-error');
+
+    async function tryUnlock() {
+        const userOk = userInput.value.trim().toLowerCase() === STORED_USER;
+        const hash = await sha256(passInput.value.trim());
+        if (userOk && hash === STORED_HASH) {
+            document.getElementById('gate').style.display = 'none';
+            document.getElementById('doc').style.display = 'block';
+        } else {
+            errorMsg.textContent = 'Usuario o contraseña incorrectos.';
+        }
+    }
+
+    document.getElementById('gate-btn').addEventListener('click', tryUnlock);
+    passInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryUnlock(); });
+    userInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryUnlock(); });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>SPECTHER - Agencia Web Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+
+            --bg-sec1: #0A0B10;
+            --border-sec1: rgba(255, 255, 255, 0.06);
+            --s1-accent: #3b82f6;
+            --s1-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+
+            --bg-sec2: #0f121d;
+            --border-sec2: rgba(6, 182, 212, 0.15);
+            --s2-accent: #06b6d4;
+            --s2-gradient: linear-gradient(135deg, #06b6d4, #3b82f6);
+
+            --bg-sec3: #05080e;
+            --border-sec3: rgba(16, 185, 129, 0.15);
+            --s3-accent: #10b981;
+            --s3-gradient: linear-gradient(135deg, #10b981, #06b6d4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: #020204;
+
+            background-image:
+                linear-gradient(180deg, rgba(2,2,4,0.82), rgba(2,2,4,0.9)),
+                url('fondo-specther.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-main);
+        }
+
+        .card-container {
+            background-color: var(--bg-sec1);
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            max-height: 850px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.05);
+            overflow: hidden;
+            border-radius: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .tab-content {
+            width: 100%;
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            padding-bottom: 78px;
+        }
+        .tab-content::-webkit-scrollbar {
+            display: none;
+        }
+        .tab-panel {
+            display: none;
+            width: 100%;
+            min-height: 100%;
+            flex-direction: column;
+        }
+        .tab-panel.active {
+            display: flex;
+            animation: panelFadeIn 0.35s ease;
+        }
+        @keyframes panelFadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 22px 3.5% 8px 3.5%;
+        }
+        .profile-signature {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            padding: 24px 3.5% 0 3.5%;
+        }
+        .sig-name {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .sig-role {
+            color: var(--s1-accent);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .sig-company {
+            color: var(--text-muted);
+            font-size: 11px;
+        }
+        .grid-cell {
+            aspect-ratio: 1 / 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-sec1);
+            border-radius: 20px;
+            color: var(--text-main);
+            cursor: pointer;
+            text-align: center;
+            padding: 10px;
+            font-family: inherit;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+        .grid-cell:active { transform: scale(0.95); }
+        .grid-cell i {
+            font-size: 30px;
+            background: var(--s1-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .grid-cell span {
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        .grid-cell small {
+            font-size: 9px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+        .grid-cell:nth-child(1) i { background: var(--s1-gradient); -webkit-background-clip: text; background-clip: text; }
+        .grid-cell:nth-child(2) i { background: var(--s2-gradient); -webkit-background-clip: text; background-clip: text; }
+        .grid-cell:nth-child(3) i { background: var(--s3-gradient); -webkit-background-clip: text; background-clip: text; }
+        .grid-cell:nth-child(4) i { background: linear-gradient(135deg, #f59e0b, #ef4444); -webkit-background-clip: text; background-clip: text; }
+
+        .profile-detail {
+            display: none;
+            padding: 18px 3.5% 10px 3.5%;
+        }
+        .profile-detail.active {
+            display: block;
+            animation: revealUp 0.4s ease both;
+        }
+        .detail-back {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: none;
+            color: var(--s1-accent);
+            font-size: 12px;
+            font-weight: 700;
+            font-family: inherit;
+            padding: 8px 0 16px 0;
+            cursor: pointer;
+        }
+        .detail-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .detail-title i { color: var(--s1-accent); font-size: 18px; }
+
+        .detail-body { color: var(--text-muted); font-size: 12.5px; line-height: 1.75; }
+        .detail-body strong { color: #ffffff; }
+        .detail-intro { text-align: justify; margin-bottom: 20px; }
+        .who-section { margin-bottom: 20px; }
+        .who-section h4 {
+            font-size: 11.5px;
+            font-weight: 800;
+            color: var(--s1-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+        .who-list { list-style: none; }
+        .who-list li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+            text-align: justify;
+        }
+        .who-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--s1-accent);
+        }
+
+        .forum-group-title {
+            font-size: 11.5px;
+            font-weight: 800;
+            color: var(--s1-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 22px 0 10px 0;
+        }
+        .forum-group-title:first-child { margin-top: 0; }
+        .forum-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-sec1);
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+        .forum-card h5 {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .forum-card h5 i { color: var(--s1-accent); font-size: 14px; }
+        .forum-card p { font-size: 11.5px; color: var(--text-muted); line-height: 1.65; margin-bottom: 6px; text-align: justify; }
+        .forum-card .cv-mention { font-size: 10.5px; color: var(--s2-accent); font-style: italic; }
+
+        .timeline { position: relative; padding: 6px 0 4px 0; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--s1-accent), var(--s2-accent), var(--s3-accent));
+            transform: translateX(-50%);
+        }
+        .tl-item {
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            padding: 0 16px 24px 16px;
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .tl-item.tl-left { left: 0; text-align: right; transform: translateX(-26px); }
+        .tl-item.tl-right { left: 50%; text-align: left; transform: translateX(26px); }
+        .tl-item.in-view { opacity: 1; transform: translateX(0); }
+        .tl-node {
+            position: absolute;
+            top: 3px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--bg-sec1);
+            border: 2px solid var(--s1-accent);
+            z-index: 2;
+        }
+        .tl-item.tl-left .tl-node { right: -6px; }
+        .tl-item.tl-right .tl-node { left: -6px; }
+        .tl-card {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-sec1);
+            border-radius: 12px;
+            padding: 9px 11px;
+            cursor: pointer;
+            width: 100%;
+            text-align: inherit;
+            color: inherit;
+            font-family: inherit;
+        }
+        .tl-year { font-size: 10px; font-weight: 800; color: var(--s1-accent); letter-spacing: 0.5px; }
+        .tl-title { font-size: 11px; font-weight: 700; color: #fff; line-height: 1.35; }
+        .tl-item.tl-right .tl-card { align-items: flex-start; }
+        .tl-item.tl-left .tl-card { align-items: flex-end; }
+        .tl-chevron { font-size: 9px; color: var(--text-muted); transition: transform 0.25s ease; margin-top: 3px; }
+        .tl-item.expanded .tl-chevron { transform: rotate(180deg); color: var(--s1-accent); }
+        .tl-desc {
+            max-height: 0;
+            overflow: hidden;
+            font-size: 10.5px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            transition: max-height 0.35s ease, margin-top 0.35s ease;
+        }
+        .tl-item.expanded .tl-desc { margin-top: 7px; }
+
+        .section-services {
+            background-color: var(--bg-sec2);
+            width: 100%;
+            padding: 40px 0 35px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 1px solid var(--border-sec2);
+        }
+
+        .section-title {
+            align-self: flex-start;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            margin-left: 3.5%;
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+        }
+        .title-s2::after { background: var(--s2-gradient); }
+        .title-s3::after { background: var(--s3-gradient); }
+
+        .stage-3d-horiz {
+            width: 100%;
+            height: 310px;
+            perspective: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .carousel-3d-original {
+            width: 280px;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .service-card-original {
+            position: absolute;
+            width: 280px;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: linear-gradient(145deg, rgba(20,22,33,0.95) 0%, rgba(10,11,16,0.98) 100%);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            backface-visibility: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .node-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 12px;
+        }
+        .node-header i {
+            font-size: 20px;
+            background: var(--s2-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .node-header h3 { font-size: 14px; color: #ffffff; font-weight: 700; }
+
+        .node-desc-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        .node-desc-item i { color: var(--s2-accent); margin-top: 3px; font-size: 10px; }
+
+        .section-portfolio {
+            background-color: var(--bg-sec3);
+            width: 100%;
+            padding: 40px 0 35px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 1px solid var(--border-sec3);
+        }
+
+        .stage-widescreen {
+            width: 100%;
+            height: 240px;
+            perspective: 1200px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .portfolio-book-container {
+            width: 320px;
+            height: 190px;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .monitor-frame {
+            position: absolute;
+            width: 320px;
+            height: 185px;
+            background: #090c10;
+            border: 4px solid #1f242e;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            backface-visibility: hidden;
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s;
+        }
+
+        .monitor-top-bar {
+            width: 100%;
+            background: #161b22;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .browser-dots {
+            display: flex;
+            gap: 4px;
+        }
+        .browser-dots span {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .monitor-url-input {
+            background: #0d1117;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 4px;
+            font-size: 8px;
+            color: var(--s3-accent);
+            padding: 1px 8px;
+            width: 180px;
+            font-family: monospace;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .monitor-web-content {
+            flex: 1;
+            padding: 12px 10px;
+            background: radial-gradient(circle at top right, #0e1420, #040608);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .web-hero-layout {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .web-brand {
+            font-size: 11px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+        .web-brand span {
+            display: block;
+            font-size: 8px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-top: 1px;
+        }
+        .web-badge-status {
+            font-size: 7px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--s3-accent);
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-weight: 600;
+            border: 1px solid rgba(16, 185, 129, 0.15);
+        }
+
+        .web-sections-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            margin: 6px 0;
+        }
+        .web-block-element {
+            background: rgba(255,255,255,0.01);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 6px;
+            padding: 6px 4px;
+            text-align: center;
+        }
+        .web-block-element i { font-size: 10px; color: var(--s3-accent); margin-bottom: 3px;}
+        .web-block-element div { font-size: 8px; font-weight: 600; color: #fff; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+        .web-block-element span { font-size: 6.5px; color: var(--text-muted); display: block;}
+
+        .web-footer-tags {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.03);
+            padding-top: 5px;
+            font-size: 7.5px;
+            color: var(--text-muted);
+        }
+
+        .monitor-stand {
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 8px;
+            background: #1f242e;
+            border-radius: 2px;
+            z-index: -1;
+        }
+
+        .section-form {
+            background-color: var(--bg-sec1);
+            width: 100%;
+            padding: 32px 3.5% 24px 3.5%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-title {
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            position: relative;
+        }
+        .form-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--s1-gradient);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .input-group label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .input-group input, .input-group textarea {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-sec1);
+            border-radius: 12px;
+            padding: 12px 14px;
+            color: #ffffff;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .input-group input:focus, .input-group textarea:focus {
+            border-color: var(--s1-accent);
+        }
+
+        .policy-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 4px;
+        }
+        .policy-group input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--s1-accent);
+            cursor: pointer;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .policy-group label {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .btn-submit {
+            background: var(--s1-gradient);
+            border: none;
+            border-radius: 14px;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 14px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+        .btn-submit:active { transform: scale(0.97); }
+        .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .form-msg {
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            min-height: 16px;
+            margin-top: 4px;
+        }
+
+        .call-consult-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            padding: 14px 0 16px 0;
+            margin-bottom: 6px;
+            border-bottom: 1px solid var(--border-sec1);
+        }
+
+        .fixed-btn {
+            height: 44px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 11.5px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 14px;
+            transition: transform 0.2s;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+
+        .btn-call {
+            background: linear-gradient(135deg, #161925, #0f111a);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .btn-call i { color: var(--s1-accent); }
+        .fixed-btn:active { transform: scale(0.96); }
+
+        .btn-chat {
+            background: var(--s1-gradient);
+        }
+
+        .top-app-bar {
+            width: 100%;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: var(--bg-sec1);
+            border-bottom: 1px solid var(--border-sec1);
+            padding-left: 3.5%;
+            padding-right: 3.5%;
+            animation: barFadeDown 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        @keyframes barFadeDown {
+            from { opacity: 0; transform: translateY(-14px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .top-bar-main {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 14px 0 18px 0;
+            padding: 22px 18px;
+            background: linear-gradient(150deg, #1a1d27, #101218);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 26px;
+            box-shadow: 0 14px 30px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .top-bar-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 18px;
+            right: 18px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.35), rgba(255,255,255,0));
+        }
+
+        .top-bar-avatar {
+            flex-shrink: 0;
+            width: 146px;
+            height: 146px;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+            background-color: #1f2937;
+        }
+        .top-bar-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 40% 20%;
+        }
+
+        .top-bar-identity {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+        }
+        .top-bar-brand {
+            font-family: 'Comfortaa', cursive;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .top-bar-name {
+            font-size: 27px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+        }
+        .top-bar-role {
+            color: var(--s1-accent);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-top: 5px;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .bottom-nav {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 25;
+            display: flex;
+            width: 100%;
+            background: var(--bg-sec1);
+            border-top: 1px solid var(--border-sec1);
+            box-shadow: 0 -10px 24px rgba(0,0,0,0.4);
+            padding: 8px 3.5% 10px 3.5%;
+        }
+        .nav-btn {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            text-decoration: none;
+            color: var(--text-muted);
+            background: transparent;
+            border: none;
+            border-radius: 14px;
+            padding: 6px 2px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            transition: transform 0.2s, color 0.2s, background 0.2s;
+            cursor: pointer;
+        }
+        .nav-btn i { font-size: 25px; color: var(--s1-accent); transition: transform 0.2s; }
+        .nav-btn:active { transform: scale(0.94); }
+        .nav-btn.active {
+            color: #ffffff;
+            background: rgba(59, 130, 246, 0.1);
+        }
+        .nav-btn.active i { transform: translateY(-1px); }
+        .nav-btn-contact i { color: var(--s2-accent); }
+
+        @keyframes revealSpin {
+            0% { opacity: 0; transform: rotate(-240deg) scale(0.45); }
+            100% { opacity: 1; transform: rotate(0deg) scale(1); }
+        }
+        @keyframes revealLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes revealRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes revealUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body.intro-playing .top-bar-avatar { animation: revealSpin 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
+        body.intro-playing .top-bar-identity { animation: revealLeft 0.65s ease 0.3s both; }
+        body.intro-playing .call-consult-row .btn-call { animation: revealUp 0.55s ease 0.05s both; }
+        body.intro-playing .call-consult-row .btn-chat { animation: revealUp 0.55s ease 0.18s both; }
+        body.intro-playing .nav-btn:nth-child(1) { animation: revealLeft 0.55s ease 0.55s both; }
+        body.intro-playing .nav-btn:nth-child(2) { animation: revealLeft 0.55s ease 0.68s both; }
+        body.intro-playing .nav-btn:nth-child(3) { animation: revealRight 0.55s ease 0.55s both; }
+        body.intro-playing .nav-btn:nth-child(4) { animation: revealRight 0.55s ease 0.68s both; }
+        body.intro-playing #section-services .section-title { animation: revealUp 0.55s ease 0.9s both; }
+        body.intro-playing #section-services .stage-3d-horiz { animation: revealUp 0.6s ease 1.05s both; }
+    </style>
+</head>
+<body class="intro-playing">
+
+    <div class="card-container">
+
+        <div class="top-app-bar">
+
+            <div class="call-consult-row">
+                <a href="tel:+573024196999" class="fixed-btn btn-call">
+                    <i class="fa-solid fa-phone-flip"></i>
+                    Llamar
+                </a>
+                <a href="https://wa.me/573024196999" target="_blank" class="fixed-btn btn-chat">
+                    <i class="fa-solid fa-circle-nodes"></i>
+                    Consultoría
+                </a>
+            </div>
+
+            <div class="top-bar-main">
+                <div class="top-bar-avatar">
+                    <img src="imagen1.jpg" alt="John Garzón">
+                </div>
+                <div class="top-bar-identity">
+                    <div class="top-bar-brand">Specther Group</div>
+                    <h1 class="top-bar-name">John Garzón</h1>
+                    <p class="top-bar-role">Gerente de Proyectos</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+
+            <div class="tab-panel" id="panel-profile">
+
+                <div class="profile-signature">
+                    <span class="sig-name">John Garzón</span>
+                    <span class="sig-role">Gerente de Proyectos</span>
+                    <span class="sig-company">Specther Group</span>
+                </div>
+
+                <div class="profile-grid" id="profile-grid">
+                    <button type="button" class="grid-cell" data-detail="detail-who">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span>¿Quién Soy?</span>
+                    </button>
+                    <button type="button" class="grid-cell" data-detail="detail-education">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span>Formación Académica</span>
+                    </button>
+                    <button type="button" class="grid-cell" data-detail="detail-experience">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <span>Experiencia</span>
+                    </button>
+                    <button type="button" class="grid-cell" data-detail="detail-forums">
+                        <i class="fa-solid fa-people-group"></i>
+                        <span>Foros</span>
+                    </button>
+                </div>
+
+                <div class="profile-detail" id="detail-who">
+                    <button type="button" class="detail-back"><i class="fa-solid fa-arrow-left"></i> Volver</button>
+                    <h3 class="detail-title"><i class="fa-solid fa-user-tie"></i> ¿Quién Soy?</h3>
+                    <div class="detail-body">
+                        <p class="detail-intro">Ejecutivo senior de proyectos estratégicos con más de 15 años de trayectoria liderando iniciativas de transformación empresarial, expansión internacional y optimización operativa en multinacionales de primer nivel. Especialista en la articulación e implementación de planes estratégicos de alto valor, gobernanza corporativa e integración de portafolios complejos de negocio en entornos multiculturales y altamente competitivos.</p>
+
+                        <div class="who-section">
+                            <h4>Fortalezas Clave</h4>
+                            <ul class="who-list">
+                                <li><strong>Liderazgo y Disciplina Operativa:</strong> dominio de metodologías de gestión de proyectos (PMI, Agile, Lean Six Sigma) aplicado con un rigor impecable en la gobernanza presupuestaria, gestión de riesgos y alineación del portafolio estratégico con los objetivos del C-Suite.</li>
+                                <li><strong>Visión de Negocio Global:</strong> capacidad comprobada para cerrar la brecha entre la estrategia corporativa y la ejecución táctica, gestionando equipos multidisciplinarios e internacionales en América Latina, Norteamérica y Europa.</li>
+                                <li><strong>Gestión del Cambio y Transformación Digital:</strong> experto en liderar procesos de reestructuración corporativa, adopción de nuevas tecnologías e integración de procesos tras fusiones y adquisiciones (M&amp;A).</li>
+                            </ul>
+                        </div>
+
+                        <div class="who-section">
+                            <h4>Consolidado de Resultados Destacados</h4>
+                            <ul class="who-list">
+                                <li><strong>Transformación de Portafolios:</strong> lideró la reestructuración del portafolio de proyectos estratégicos para una multinacional, logrando una reducción del 18% en costos operativos y acelerando el time-to-market de iniciativas clave en un 25%.</li>
+                                <li><strong>Ejecución de Capital (CapEx):</strong> diseñó y ejecutó el plan maestro de expansión regional con una inversión superior a USD 50 M, entregando el 100% de los proyectos en tiempo y bajo presupuesto.</li>
+                                <li><strong>Eficiencia Operativa:</strong> implementó un modelo de gobernanza PMO global que estandarizó la gestión de más de 40 proyectos en simultáneo, incrementando la tasa de éxito en entregables estratégicos del 72% al 95%.</li>
+                            </ul>
+                        </div>
+
+                        <div class="who-section">
+                            <h4>Reconocimientos y Credenciales</h4>
+                            <ul class="who-list">
+                                <li><strong>Reconocimiento de la Industria:</strong> galardonado con el premio Best Strategic Execution Award por la optimización de procesos de alto impacto en entorno multinacional.</li>
+                                <li><strong>Membresías y Redes:</strong> miembro activo de la red global de líderes de PMO y conferencista invitado en foros internacionales sobre dirección estratégica y gestión de portafolios.</li>
+                            </ul>
+                        </div>
+
+                        <div class="who-section">
+                            <h4>Certificaciones de Clase Mundial</h4>
+                            <ul class="who-list">
+                                <li>PMP® (Project Management Professional) – Project Management Institute</li>
+                                <li>PfMP® (Portfolio Management Professional)</li>
+                                <li>Agile Certified Practitioner (PMI-ACP)® / SAFe® Agilist</li>
+                                <li>Lean Six Sigma Green/Black Belt</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-detail" id="detail-education">
+                    <button type="button" class="detail-back"><i class="fa-solid fa-arrow-left"></i> Volver</button>
+                    <h3 class="detail-title"><i class="fa-solid fa-graduation-cap"></i> Formación Académica</h3>
+                    <div class="timeline">
+                        <div class="tl-item tl-left">
+                            <div class="tl-node"></div>
+                            <div class="tl-card"><span class="tl-year">2015</span><span class="tl-title">Ingeniero de Sistemas — Universidad Cun</span></div>
+                        </div>
+                        <div class="tl-item tl-right">
+                            <div class="tl-node"></div>
+                            <div class="tl-card"><span class="tl-year">2017</span><span class="tl-title">Maestría en Seguridad Informática — Universidad de Harvard</span></div>
+                        </div>
+                        <div class="tl-item tl-left">
+                            <div class="tl-node"></div>
+                            <div class="tl-card"><span class="tl-year">2018</span><span class="tl-title">Diplomado en Análisis de Datos — MIT</span></div>
+                        </div>
+                        <div class="tl-item tl-right">
+                            <div class="tl-node"></div>
+                            <div class="tl-card"><span class="tl-year">2019</span><span class="tl-title">Diplomado en Desarrollo de Aplicaciones, Software y Programación — Google</span></div>
+                        </div>
+                        <div class="tl-item tl-left">
+                            <div class="tl-node"></div>
+                            <div class="tl-card"><span class="tl-year">2020</span><span class="tl-title">Desarrollo sobre entornos Linux</span></div>
+                        </div>
+                        <div class="tl-item tl-right">
+                            <div class="tl-node"></div>
+                            <div class="tl-card"><span class="tl-year">2021</span><span class="tl-title">Diplomado de análisis técnico y trading cuantitativo</span></div>
+                        </div>
+                        <div class="tl-item tl-left">
+                            <div class="tl-node"></div>
+                            <div class="tl-card"><span class="tl-year">2023</span><span class="tl-title">Diplomado en Gestión de Portafolios y Asignación de Activos</span></div>
+                        </div>
+                        <div class="tl-item tl-right">
+                            <div class="tl-node"></div>
+                            <div class="tl-card"><span class="tl-year">2024</span><span class="tl-title">Diplomado en Mercado de Capitales y Macroeconomía Aplicada</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-detail" id="detail-experience">
+                    <button type="button" class="detail-back"><i class="fa-solid fa-arrow-left"></i> Volver</button>
+                    <h3 class="detail-title"><i class="fa-solid fa-briefcase"></i> Experiencia</h3>
+                    <div class="timeline">
+                        <div class="tl-item tl-left">
+                            <div class="tl-node"></div>
+                            <div class="tl-card" data-tl-toggle>
+                                <span class="tl-year">2020 – Presente</span>
+                                <span class="tl-title">Global Senior Director of Strategic PMO &amp; Transformation</span>
+                                <i class="fa-solid fa-chevron-down tl-chevron"></i>
+                            </div>
+                            <div class="tl-desc">
+                                <p>Multinacional de Consumo / Tecnología / Servicios | Bogotá, Colombia (Oficina Regional LatAm)</p>
+                                <p><strong>Resumen del Rol:</strong> liderazgo directo del portafolio estratégico regional (USD 120M) abarcando 6 países en América Latina. Reporte directo al VP de Estrategia Operativa y gestión de un equipo multidisciplinario de 14 Project Managers y Consultores de Transformación.</p>
+                                <p><strong>Reestructuración del Portafolio Operativo:</strong> rediseñó el modelo de gobernanza PMO global, priorizando iniciativas de alto margen y cancelando proyectos de bajo rendimiento, lo que redujo el gasto operativo (OpEx) en un 18% en los primeros 18 meses.</p>
+                                <p><strong>Transformación Digital e Integración de Sistemas:</strong> dirigió la implementación de la plataforma central de operaciones (ERP/Cloud), entregando el proyecto 3 meses antes de lo previsto y generando una eficiencia de procesos que ahorró COP $4.500 millones en costos recurrentes.</p>
+                                <p><strong>Alineación Estratégica con C-Suite:</strong> estandarizó la metodología de seguimiento basada en OKRs y Balanced Scorecard para la junta directiva, elevando el cumplimiento de hitos estratégicos del 72% al 95% a nivel regional.</p>
+                            </div>
+                        </div>
+
+                        <div class="tl-item tl-right">
+                            <div class="tl-node"></div>
+                            <div class="tl-card" data-tl-toggle>
+                                <span class="tl-year">2015 – 2020</span>
+                                <span class="tl-title">Gerente Senior de Proyectos Estratégicos y Eficiencia</span>
+                                <i class="fa-solid fa-chevron-down tl-chevron"></i>
+                            </div>
+                            <div class="tl-desc">
+                                <p>Empresa de Servicios Corporativos y Real Estate / Garantías | Bogotá, Colombia</p>
+                                <p><strong>Resumen del Rol:</strong> responsable del diseño, presupuesto y ejecución de proyectos de infraestructura, tecnología y optimización de capital (CapEx) para la expansión de operaciones en el mercado nacional y regional.</p>
+                                <p><strong>Ejecución de Proyectos de Infraestructura y CapEx:</strong> lideró el plan maestro de expansión física y operativa con un presupuesto ejecutado de COP $25.000 millones, garantizando el 100% de los entregables en tiempo y bajo el margen presupuestario acordado.</p>
+                                <p><strong>Integración e Inversión Estratégica:</strong> encabezó la oficina de gestión del cambio tras la fusión de dos unidades de negocio clave, logrando la captura de sinergias operativas por más de COP $2.800 millones en el primer año sin interrumpir la continuidad del negocio.</p>
+                                <p><strong>Mitigación de Riesgos y Gobernanza:</strong> diseñó la matriz de gestión de riesgos corporativos para proyectos de alto valor, reduciendo las desviaciones presupuestarias críticas de un 12% a menos del 2%.</p>
+                            </div>
+                        </div>
+
+                        <div class="tl-item tl-left">
+                            <div class="tl-node"></div>
+                            <div class="tl-card" data-tl-toggle>
+                                <span class="tl-year">2010 – 2015</span>
+                                <span class="tl-title">Gerente de Proyectos de Transformación Organizacional</span>
+                                <i class="fa-solid fa-chevron-down tl-chevron"></i>
+                            </div>
+                            <div class="tl-desc">
+                                <p>Grupo Multinacional de Consultoría &amp; Operaciones | Medellín / Bogotá, Colombia</p>
+                                <p><strong>Resumen del Rol:</strong> dirección de células de trabajo para la optimización de procesos, reestructuración operativa y metodologías ágiles en clientes corporativos de gran escala.</p>
+                                <p><strong>Optimización de Procesos (Lean Six Sigma):</strong> implementó proyectos de rediseño de procesos en unidades financieras y comerciales, aumentando la productividad operativa en un 30% y reduciendo tiempos de respuesta al cliente final (turnaround time) en un 40%.</p>
+                                <p><strong>Liderazgo de Equipos y Metodología:</strong> introdujo marcos de trabajo ágiles (Scrum / SAFe) en la gestión de proyectos de la compañía, capacitando a más de 120 profesionales y acelerando el time-to-market de nuevos servicios en un 25%.</p>
+                            </div>
+                        </div>
+
+                        <div class="tl-item tl-right">
+                            <div class="tl-node"></div>
+                            <div class="tl-card" data-tl-toggle>
+                                <span class="tl-year">2008 – 2010</span>
+                                <span class="tl-title">Líder / Analista Senior de Proyectos y Planeación</span>
+                                <i class="fa-solid fa-chevron-down tl-chevron"></i>
+                            </div>
+                            <div class="tl-desc">
+                                <p>Firma de Consultoría en Estrategia | Bogotá, Colombia</p>
+                                <p>Estructuración de modelos financieros, análisis de sensibilidad de mercado y seguimiento al avance de cronogramas para proyectos de inversión de gran envergadura.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-detail" id="detail-forums">
+                    <button type="button" class="detail-back"><i class="fa-solid fa-arrow-left"></i> Volver</button>
+                    <h3 class="detail-title"><i class="fa-solid fa-people-group"></i> Foros</h3>
+                    <div class="detail-body">
+                        <div class="forum-group-title">Foros y Cumbres Globales de Referencia</div>
+
+                        <div class="forum-card">
+                            <h5><i class="fa-solid fa-microphone-lines"></i> PMI® Global Summit</h5>
+                            <p><strong>Perfil:</strong> el evento insignia a nivel mundial para la alta dirección de proyectos y portafolios.</p>
+                            <p><strong>Relevancia:</strong> reúne a directores ejecutivos y vicepresidentes para discutir tendencias globales como la inteligencia artificial aplicada a proyectos, transformación organizacional y gestión de riesgos macroeconómicos.</p>
+                            <p class="cv-mention">Conferencista / Asistente recurrente al PMI Global Summit sobre mejores prácticas de gobernanza CapEx/OpEx.</p>
+                        </div>
+
+                        <div class="forum-card">
+                            <h5><i class="fa-solid fa-earth-americas"></i> Global Project Management Forum (GPMF)</h5>
+                            <p><strong>Perfil:</strong> foro internacional que congrega a líderes del ecosistema directivo, enfocado en mega-proyectos, sostenibilidad empresarial e innovación en entregas estratégicas.</p>
+                            <p><strong>Relevancia:</strong> espacio clave para la interacción entre C-Suite, entidades gubernamentales y grandes multinacionales.</p>
+                        </div>
+
+                        <div class="forum-card">
+                            <h5><i class="fa-solid fa-landmark"></i> The PMO Conference (Londres / Global)</h5>
+                            <p><strong>Perfil:</strong> evento de escala internacional enfocado 100% en la dirección, madurez y valor estratégico de las Oficinas de Gestión de Proyectos (PMO).</p>
+                            <p><strong>Relevancia:</strong> aborda cómo transformar la PMO de un centro de control operativo a un verdadero motor de decisiones estratégicas para la junta directiva.</p>
+                        </div>
+
+                        <div class="forum-group-title">Asociaciones y Redes Directivas de Estrategia</div>
+
+                        <div class="forum-card">
+                            <h5><i class="fa-solid fa-handshake"></i> IASP</h5>
+                            <p><strong>Perfil:</strong> la asociación mundial líder en pensamiento, planificación y ejecución estratégica.</p>
+                            <p><strong>Relevancia:</strong> congrega a los máximos referentes en definición de roadmaps corporativos, OKRs y gestión del cambio a nivel multinacional.</p>
+                            <p class="cv-mention">Miembro activo de la International Association for Strategy Professionals (IASP).</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="tab-panel active" id="panel-services">
+            <section class="section-services" id="section-services">
+                <h2 class="section-title title-s2">Soluciones Globales</h2>
+
+                <div class="stage-3d-horiz">
+                    <div class="carousel-3d-original" id="carousel-serv-original">
+                        <div class="service-card-original">
+                            <div class="node-header"><i class="fa-solid fa-brain"></i><h3>Ingeniería de IA</h3></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Modelos Fundacionales & LLMs Corporativos.</span></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Agentes de automatización de flujos B2B.</span></div>
+                        </div>
+                        <div class="service-card-original">
+                            <div class="node-header"><i class="fa-solid fa-code"></i><h3>Desarrollo Frontend</h3></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Estructuras robustas bajo metodología BEM CSS.</span></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Optimización milimétrica Core Web Vitals.</span></div>
+                        </div>
+                        <div class="service-card-original">
+                            <div class="node-header"><i class="fa-solid fa-shield-cat"></i><h3>Ciberseguridad</h3></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Hacking Ético preventivo y análisis perimetral.</span></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Arquitecturas seguras basadas en Zero-Trust.</span></div>
+                        </div>
+                        <div class="service-card-original">
+                            <div class="node-header"><i class="fa-solid fa-cloud"></i><h3>Cloud & DevOps</h3></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Infraestructura elástica de alta disponibilidad.</span></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Despliegues automatizados mediante CI/CD.</span></div>
+                        </div>
+                        <div class="service-card-original">
+                            <div class="node-header"><i class="fa-solid fa-chart-line"></i><h3>Data Analytics</h3></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Procesamiento de datos a gran escala.</span></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Dashboards predictivos para decisiones TI.</span></div>
+                        </div>
+                        <div class="service-card-original">
+                            <div class="node-header"><i class="fa-solid fa-mobile-button"></i><h3>Mobile Compilations</h3></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Empaquetado de código HTML a entornos Android.</span></div>
+                            <div class="node-desc-item"><i class="fa-solid fa-terminal"></i><span>Distribución óptima de instalables ligeros.</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </div>
+
+            <div class="tab-panel" id="panel-portfolio">
+            <section class="section-portfolio" id="section-portfolio">
+                <h2 class="section-title title-s3">Ecosistema Proyectos</h2>
+
+                <div class="stage-widescreen">
+                    <div class="portfolio-book-container" id="portfolio-monitors">
+
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://expansiva.com</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">Expansiva UI <span>Plataforma Real Estate Guarantor</span></div>
+                                    <span class="web-badge-status">Live</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-solid fa-calculator"></i><div>Calculadora</div><span>Exacta</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-bolt"></i><div>Core Vitals</div><span>&lt; 50ms</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-user-shield"></i><div>Fianza digital</div><span>Garantizada</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>Next.js + Tailwind</span><span>v2.4</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://amero.com</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">AMERO App <span>Dark Kitchen Tradicional</span></div>
+                                    <span class="web-badge-status">Production</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-solid fa-utensils"></i><div>Menú Digital</div><span>Auto-update</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-truck-ramp-box"></i><div>Logística</div><span>Dark Kitchen</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-mobile-screen"></i><div>PWA Engine</div><span>100% Native</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>React + CSS BEM</span><span>v1.2</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://donchori.com</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">Don Chori POS <span>Control Comercial Multi-Punto</span></div>
+                                    <span class="web-badge-status">Active</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-solid fa-shop"></i><div>5 Puntos</div><span>Valledupar</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-hand-holding-dollar"></i><div>Comisiones</div><span>Realtime</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-tags"></i><div>Precio Fijo</div><span>$5,000 COP</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>Vue.js + Node.js</span><span>v4.0</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://asesoriaslegales.com</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">Legales Network <span>Ecosistema de Asesorias Legales</span></div>
+                                    <span class="web-badge-status">Staging</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-solid fa-file-signature"></i><div>Intake Form</div><span>No Docs Required</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-hourglass-start"></i><div>Estudio Eficiente</div><span>Aprobación</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-building-shield"></i><div>Asesoría Jurídica</div><span>Respaldo Total</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>Angular + Go</span><span>v0.9</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://specther.com</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">Specther Lab <span>Agencia de Cómputo Avanzado</span></div>
+                                    <span class="web-badge-status">Online</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-solid fa-cube"></i><div>Web 3D</div><span>GPU WebGL</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-network-wired"></i><div>Infraestructura</div><span>Edge Nodes</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-microchip"></i><div>Core AI</div><span>Custom LLM</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>Vanilla JS + CSS</span><span>v3.1</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://htmltoapk.com</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">APK Compiler <span>Conversor de Proyectos Web</span></div>
+                                    <span class="web-badge-status">Beta</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-brands fa-android"></i><div>HTML a APK</div><span>Empaquetado</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-box-archive"></i><div>Zip Upload</div><span>Compilación</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-download"></i><div>Descarga</div><span>Instalable</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>Electron + Rust</span><span>v1.0</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://zeroshield.io</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">Zero Shield <span>Autenticación e Identidad</span></div>
+                                    <span class="web-badge-status">Secure</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-solid fa-key"></i><div>OAuth3</div><span>Decentralized</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-fingerprint"></i><div>Biometría</div><span>WebAuthn API</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-clock-rotate-left"></i><div>Logs</div><span>Auditoría</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>Go + WebAssembly</span><span>v2.0</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                        <div class="monitor-frame">
+                            <div class="monitor-top-bar">
+                                <div class="browser-dots"><span></span><span></span><span></span></div>
+                                <div class="monitor-url-input">https://streamflow.dev</div>
+                                <i class="fa-solid fa-rotate-right" style="font-size: 7px; color: var(--text-muted);"></i>
+                            </div>
+                            <div class="monitor-web-content">
+                                <div class="web-hero-layout">
+                                    <div class="web-brand">StreamFlow <span>Procesamiento de Eventos</span></div>
+                                    <span class="web-badge-status">Active</span>
+                                </div>
+                                <div class="web-sections-preview">
+                                    <div class="web-block-element"><i class="fa-solid fa-database"></i><div>ETL Engine</div><span>Auto-mapping</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-wave-square"></i><div>Kafka Stream</div><span>Low Latency</span></div>
+                                    <div class="web-block-element"><i class="fa-solid fa-chart-pie"></i><div>Análisis</div><span>Predictivo</span></div>
+                                </div>
+                                <div class="web-footer-tags"><span>Python + Kafka</span><span>v1.5</span></div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            </div>
+
+            <div class="tab-panel" id="panel-contact">
+            <section class="section-form" id="section-form">
+                <h2 class="form-title">Iniciar Consultoría</h2>
+
+                <form class="contact-form" id="contact-form" action="https://formsubmit.co/60ed378fc97eaab21d6b9b75a66d2899" method="POST">
+
+                    <input type="hidden" name="_subject" value="Nueva solicitud de consultoría — Specther">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
+                    <input type="hidden" name="_next" id="form-next" value="">
+
+                    <div class="input-group">
+                        <label for="txt-name">Nombre Completo</label>
+                        <input type="text" id="txt-name" name="Nombre completo" placeholder="Ej. Carlos Mendoza" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="txt-phone">Celular / WhatsApp</label>
+                        <input type="tel" id="txt-phone" name="Celular / WhatsApp" placeholder="Ej. 300 123 4567" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="txt-email">Correo Electrónico</label>
+                        <input type="email" id="txt-email" name="Correo electrónico" placeholder="carlos@empresa.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="txt-subject">Asunto</label>
+                        <textarea id="txt-subject" name="Asunto" rows="3" placeholder="Describe brevemente los requisitos de tu proyecto..." required></textarea>
+                    </div>
+
+                    <div class="policy-group">
+                        <input type="checkbox" id="chk-policy" required>
+                        <label for="chk-policy">
+                            Autorizo el tratamiento de mis datos de acuerdo con la norma colombiana de protección de datos (Ley 1581 de 2012).
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Enviar Solicitud</button>
+
+                    <p id="form-msg" class="form-msg"></p>
+                </form>
+            </section>
+            </div>
+
+        </div>
+
+        <nav class="bottom-nav">
+            <a href="#" data-tab="panel-services" class="nav-btn active">
+                <i class="fa-solid fa-sliders"></i>
+                <span>Soluciones</span>
+            </a>
+            <a href="#" data-tab="panel-portfolio" class="nav-btn">
+                <i class="fa-solid fa-diagram-project"></i>
+                <span>Proyectos</span>
+            </a>
+            <a href="#" data-tab="panel-profile" class="nav-btn">
+                <i class="fa-solid fa-id-badge"></i>
+                <span>Perfil</span>
+            </a>
+            <a href="#" data-tab="panel-contact" class="nav-btn nav-btn-contact">
+                <i class="fa-solid fa-headset"></i>
+                <span>Contacto</span>
+            </a>
+        </nav>
+
+    </div>
+
+    <script>
+        setTimeout(() => document.body.classList.remove('intro-playing'), 1800);
+
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+        const tabContent = document.querySelector('.tab-content');
+
+        const profileGrid = document.getElementById('profile-grid');
+        const profileDetails = document.querySelectorAll('.profile-detail');
+
+        function showProfileDetail(id) {
+            profileGrid.style.display = 'none';
+            profileDetails.forEach(d => d.classList.toggle('active', d.id === id));
+            tabContent.scrollTop = 0;
+        }
+        function showProfileGrid() {
+            profileDetails.forEach(d => d.classList.remove('active'));
+            profileGrid.style.display = 'grid';
+        }
+
+        document.querySelectorAll('.grid-cell').forEach(cell => {
+            cell.addEventListener('click', () => showProfileDetail(cell.getAttribute('data-detail')));
+        });
+        document.querySelectorAll('.detail-back').forEach(btn => {
+            btn.addEventListener('click', () => { showProfileGrid(); tabContent.scrollTop = 0; });
+        });
+
+        document.querySelectorAll('[data-tl-toggle]').forEach(card => {
+            card.addEventListener('click', () => {
+                const item = card.closest('.tl-item');
+                const desc = item.querySelector('.tl-desc');
+                const isOpen = item.classList.toggle('expanded');
+                desc.style.maxHeight = isOpen ? desc.scrollHeight + 'px' : '0px';
+            });
+        });
+
+        const tlObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    tlObserver.unobserve(entry.target);
+                }
+            });
+        }, { root: tabContent, threshold: 0.15 });
+
+        document.querySelectorAll('.tl-item').forEach(item => tlObserver.observe(item));
+
+        navButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = btn.getAttribute('data-tab');
+
+                navButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                showProfileGrid();
+
+                tabPanels.forEach(panel => {
+                    panel.classList.toggle('active', panel.id === targetId);
+                });
+
+                tabContent.scrollTop = 0;
+            });
+        });
+
+        const contactForm = document.getElementById('contact-form');
+        const formMsg = document.getElementById('form-msg');
+        const formNextField = document.getElementById('form-next');
+
+        if (contactForm && formNextField) {
+            const baseUrl = window.location.href.split('?')[0].split('#')[0];
+            formNextField.value = baseUrl + '?enviado=1';
+
+            contactForm.addEventListener('submit', function () {
+                const submitBtn = contactForm.querySelector('.btn-submit');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Enviando...';
+            });
+        }
+
+        if (window.location.search.includes('enviado=1')) {
+            navButtons.forEach(b => b.classList.remove('active'));
+            tabPanels.forEach(p => p.classList.remove('active'));
+            document.querySelector('[data-tab="panel-contact"]').classList.add('active');
+            document.getElementById('panel-contact').classList.add('active');
+
+            if (formMsg) {
+                formMsg.textContent = '¡Solicitud enviada con éxito! Te contactaremos pronto.';
+                formMsg.style.color = 'var(--s3-accent)';
+            }
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        const servCarousel = document.getElementById('carousel-serv-original');
+        const servCards = servCarousel.children;
+        const totalServs = servCards.length;
+        let servIndex = 0;
+
+        const radiusServ = 140;
+        const angleStepServ = 360 / totalServs;
+
+        function updateServCarousel() {
+            for (let i = 0; i < totalServs; i++) {
+                let relativeAngle = angleStepServ * (i - servIndex);
+                servCards[i].style.transform = `rotateY(${relativeAngle}deg) translateZ(${radiusServ}px)`;
+
+                if (i === servIndex) {
+                    servCards[i].style.opacity = '1';
+                    servCards[i].style.visibility = 'visible';
+                    servCards[i].style.pointerEvents = 'auto';
+                } else {
+                    servCards[i].style.opacity = '0.15';
+                    servCards[i].style.visibility = 'visible';
+                    servCards[i].style.pointerEvents = 'none';
+                }
+            }
+        }
+
+        const monitorContainer = document.getElementById('portfolio-monitors');
+        const monitors = monitorContainer.children;
+        const totalMonitors = monitors.length;
+        let monitorIndex = 0;
+
+        function updateMonitorFly() {
+            for (let i = 0; i < totalMonitors; i++) {
+                if (i === monitorIndex) {
+                    monitors[i].style.transform = `translate3d(0, 0, 30px) rotateY(0deg)`;
+                    monitors[i].style.opacity = '1';
+                    monitors[i].style.visibility = 'visible';
+                    monitors[i].style.zIndex = '10';
+                    monitors[i].style.pointerEvents = 'auto';
+                } else if (i === (monitorIndex + 1) % totalMonitors) {
+                    monitors[i].style.transform = `translate3d(50px, 0, -80px) rotateY(-35deg)`;
+                    monitors[i].style.opacity = '0.25';
+                    monitors[i].style.visibility = 'visible';
+                    monitors[i].style.zIndex = '5';
+                    monitors[i].style.pointerEvents = 'none';
+                } else if (i === (monitorIndex - 1 + totalMonitors) % totalMonitors) {
+                    monitors[i].style.transform = `translate3d(-50px, 0, -80px) rotateY(35deg)`;
+                    monitors[i].style.opacity = '0.25';
+                    monitors[i].style.visibility = 'visible';
+                    monitors[i].style.zIndex = '4';
+                    monitors[i].style.pointerEvents = 'none';
+                } else {
+                    monitors[i].style.transform = `translate3d(0, 0, -200px)`;
+                    monitors[i].style.opacity = '0';
+                    monitors[i].style.visibility = 'hidden';
+                    monitors[i].style.zIndex = '1';
+                    monitors[i].style.pointerEvents = 'none';
+                }
+            }
+        }
+
+        function cycleElements() {
+            servIndex = (servIndex + 1) % totalServs;
+            updateServCarousel();
+        }
+
+        function cycleMonitors() {
+            monitorIndex = (monitorIndex + 1) % totalMonitors;
+            updateMonitorFly();
+        }
+
+        updateServCarousel();
+        updateMonitorFly();
+
+        setInterval(cycleElements, 3500);
+        setInterval(cycleMonitors, 4500);
+    </script>
+</body>
+</html>
