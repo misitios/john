@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>SPECTHER - Documentación Interna</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+    body {
+        background: #020204;
+        color: #f3f4f6;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        padding: 40px 16px;
+    }
+    .wrap { width: 100%; max-width: 760px; }
+
+    /* --- Pantalla de acceso --- */
+    #gate {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        text-align: center;
+    }
+    #gate h1 { font-size: 18px; letter-spacing: 1px; }
+    #gate p { color: #9ca3af; font-size: 13px; max-width: 380px; }
+    #gate input {
+        width: 260px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.03);
+        color: #fff;
+        font-size: 14px;
+        outline: none;
+        text-align: center;
+    }
+    #gate button {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        color: #fff;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    #gate-error { color: #f87171; font-size: 12px; min-height: 16px; }
+
+    /* --- Documentación --- */
+    #doc { display: none; }
+    h1.title { font-size: 20px; margin-bottom: 4px; }
+    .sub { color: #9ca3af; font-size: 12px; margin-bottom: 28px; }
+    h2 {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #06b6d4;
+        margin: 34px 0 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        padding-bottom: 8px;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 6px; }
+    td { padding: 7px 8px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
+    td:first-child { color: #10b981; font-family: monospace; white-space: nowrap; width: 110px; font-weight: 700; }
+    td:last-child { color: #d1d5db; }
+    .note {
+        margin-top: 40px;
+        font-size: 12px;
+        color: #9ca3af;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 10px;
+        padding: 14px 16px;
+        line-height: 1.6;
+    }
+    code { color: #f3f4f6; background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+    <div id="gate">
+        <h1>Documentación interna — Specther</h1>
+        <p>Este archivo contiene el mapa de líneas de código de index.html. Ingresa el usuario y la contraseña para verlo.</p>
+        <input type="email" id="gate-user" placeholder="Usuario (correo)" autocomplete="off">
+        <input type="password" id="gate-pass" placeholder="Contraseña" autocomplete="off">
+        <button id="gate-btn">Entrar</button>
+        <p id="gate-error"></p>
+    </div>
+
+    <div id="doc">
+        <h1 class="title">Mapa de código — index.html</h1>
+        <p class="sub">Referencia de líneas exactas del archivo final (index.html limpio). Si vuelves a editar el archivo y agregas o quitas líneas, estos números se corren.</p>
+
+        <h2>Estructura general</h2>
+        <table>
+            <tr><td>Línea 13</td><td>Apertura de &lt;style&gt; — inicio de todo el CSS del sitio.</td></tr>
+            <tr><td>Línea 14</td><td>Bloque :root — variables de color de las 3 paletas (secciones 1, 2 y 3).</td></tr>
+            <tr><td>Línea 45</td><td>Imagen de fondo del sitio (background-image), usa el archivo <code>fondo-specther.jpg</code>.</td></tr>
+            <tr><td>Línea 58</td><td>.card-container — el "mockup" tipo celular que envuelve todo el sitio.</td></tr>
+            <tr><td>Línea 962</td><td>Cierre de &lt;/style&gt;.</td></tr>
+            <tr><td>Línea 964</td><td>&lt;body&gt; — trae la clase intro-playing, que activa las animaciones de entrada.</td></tr>
+        </table>
+
+        <h2>Componentes reutilizables (cuadrícula de 4 opciones)</h2>
+        <table>
+            <tr><td>Línea 99</td><td>CSS .opt-grid — la cuadrícula 2x2 de casillas cuadradas, usada en Perfil, Soluciones y Proyectos.</td></tr>
+            <tr><td>Línea 127</td><td>CSS .opt-cell — cada casilla (ícono + nombre). Las casillas "Próximamente" llevan además la clase .opt-cell-soon (atenuada, sin clic).</td></tr>
+            <tr><td>Línea 169</td><td>CSS .opt-detail — la vista de detalle que se despliega al tocar una casilla, con botón "Volver" (.opt-back).</td></tr>
+            <tr><td>Línea 236</td><td>CSS .info-card — tarjeta simple (ícono + título + párrafo), usada en Foros, Inversiones de Capital y Proyectos de Tecnología.</td></tr>
+            <tr><td>Línea 288</td><td>CSS .invest-card — tarjeta corporativa con insignias de monto/año, usada solo en Bienes Raíces.</td></tr>
+            <tr><td>Línea 341</td><td>CSS .timeline — línea vertical central con tarjetas alternadas izquierda/derecha (Formación Académica y Experiencia, dentro de Perfil).</td></tr>
+            <tr><td>Línea 1680</td><td>JS: gridResetFns — recorre automáticamente cada .opt-grid del sitio (Perfil, Soluciones, Proyectos) y conecta los clics de sus casillas y su botón "Volver", sin necesidad de repetir código por pestaña.</td></tr>
+        </table>
+
+        <h2>Cabecera (imagen y nombre, arriba)</h2>
+        <table>
+            <tr><td>Línea 794</td><td>CSS .top-app-bar — la barra fija de arriba (no se mueve con el scroll).</td></tr>
+            <tr><td>Línea 894</td><td>CSS .bottom-nav — barra fija de navegación en la parte inferior, con los 4 botones repartidos en 4 secciones iguales.</td></tr>
+            <tr><td>Línea 1652</td><td>HTML — apertura de &lt;nav class="bottom-nav"&gt;, orden actual: Proyectos, Soluciones, Perfil, Contacto.</td></tr>
+        </table>
+
+        <h2>Pestaña Perfil</h2>
+        <table>
+            <tr><td>Línea 995</td><td>Apertura del panel de Perfil (id="panel-profile").</td></tr>
+            <tr><td>Línea 1022</td><td>Detalle 1 (id="detail-who") — ¿Quién Soy?</td></tr>
+            <tr><td>Línea 1066</td><td>Detalle 2 (id="detail-education") — Formación Académica (línea de tiempo).</td></tr>
+            <tr><td>Línea 1105</td><td>Detalle 3 (id="detail-experience") — Experiencia (línea de tiempo expandible).</td></tr>
+            <tr><td>Línea 1171</td><td>Detalle 4 (id="detail-forums") — Foros y asociaciones.</td></tr>
+        </table>
+
+        <h2>Pestaña Soluciones</h2>
+        <table>
+            <tr><td>Línea 1209</td><td>Apertura del panel Soluciones (id="panel-services") y su cuadrícula de 4 casillas.</td></tr>
+            <tr><td>Línea 1237</td><td>Detalle 1 (id="detail-sol-global") — "Soluciones Globales": el carrusel 3D de 6 tarjetas (IA, Frontend, Ciberseguridad, Cloud, Data Analytics, Mobile). Es el mismo contenido y animación que ya existían en el sitio.</td></tr>
+            <tr><td>Línea 1279</td><td>Detalle 2 (id="detail-advisory") — "Asesorías": el carrusel de 8 monitores (Expansiva, Amero, Don Chori, Asesorías Legales, Specther Labs, Android Compiler, Zero Shield, StreamFlow), el mismo contenido que antes vivía en la pestaña Proyectos.</td></tr>
+            <tr><td>Línea 405</td><td>CSS .section-services — estilos internos del carrusel de Soluciones Globales (sin cambios).</td></tr>
+            <tr><td>Línea 499</td><td>CSS .section-portfolio — estilos internos del carrusel de Asesorías (sin cambios).</td></tr>
+        </table>
+
+        <h2>Pestaña Proyectos (contenido nuevo)</h2>
+        <table>
+            <tr><td>Línea 1462</td><td>Apertura del panel Proyectos (id="panel-portfolio", ahora primero en el menú y pestaña activa por defecto) y su cuadrícula de 4 casillas.</td></tr>
+            <tr><td>Línea 1489</td><td>Detalle 1 (id="detail-real-estate") — Bienes Raíces: 4 tarjetas corporativas (Hotel Cartagena, Edificio Bogotá, Renta corta Bogotá, Hacienda Autosuficiente) con insignias de monto e inicio de obra.</td></tr>
+            <tr><td>Línea 1548</td><td>Detalle 2 (id="detail-capital") — Inversiones de Capital: Criptomonedas, Oro, Bonos del Estado, Trading NYSE.</td></tr>
+            <tr><td>Línea 1576</td><td>Detalle 3 (id="detail-tech-projects") — Proyectos de Tecnología: ciberseguridad, crecimiento de páginas/apps, IA, SEO y redes sociales.</td></tr>
+            <tr><td>Línea 1462-1851</td><td>La 4ª casilla del grid queda marcada "Próximamente" (misma reserva de espacio que en Soluciones).</td></tr>
+        </table>
+
+        <h2>Pestaña Contacto (formulario)</h2>
+        <table>
+            <tr><td>Línea 652</td><td>CSS .section-form — estilos del formulario.</td></tr>
+            <tr><td>Línea 1604</td><td>Apertura del panel Contacto (id="panel-contact").</td></tr>
+            <tr><td>Línea 1608</td><td>Etiqueta &lt;form id="contact-form"&gt; — envía los datos a FormSubmit (correo automático).</td></tr>
+        </table>
+
+        <h2>Animaciones de entrada</h2>
+        <table>
+            <tr><td>Línea 935</td><td>@keyframes: revealSpin, revealLeft / revealRight, revealUp — usadas también por .opt-detail al desplegarse.</td></tr>
+            <tr><td>Línea 1673</td><td>JS: a los 1.8 segundos se quita la clase intro-playing (animación de entrada de una sola vez).</td></tr>
+            <tr><td>Línea 1716</td><td>JS: revealObserver — anima con fundido hacia arriba (reveal-fade) las tarjetas de Bienes Raíces, Inversiones de Capital, Proyectos de Tecnología y Foros a medida que aparecen en pantalla, además de la línea de tiempo de Perfil.</td></tr>
+        </table>
+
+        <h2>JavaScript (parte final del archivo)</h2>
+        <table>
+            <tr><td>Línea 1673</td><td>Apertura de &lt;script&gt;.</td></tr>
+            <tr><td>Línea 1680-1710</td><td>gridResetFns — lógica genérica de cuadrícula/detalle que se aplica automáticamente a Perfil, Soluciones y Proyectos.</td></tr>
+            <tr><td>Línea 1727-1743</td><td>Navegación entre pestañas (clic en los 4 botones de la barra inferior).</td></tr>
+            <tr><td>Línea 1745-1771</td><td>Lógica del formulario de contacto.</td></tr>
+            <tr><td>Línea 1773-1796</td><td>Carrusel 3D de Soluciones Globales.</td></tr>
+            <tr><td>Línea 1798-1831</td><td>Carrusel de Asesorías (efecto de monitores en perspectiva).</td></tr>
+            <tr><td>Línea 1833-1847</td><td>Funciones que avanzan ambos carruseles automáticamente: cada 3.5s y 4.5s.</td></tr>
+        </table>
+
+        <div class="note">
+            Este archivo (info.html) es solo para referencia interna: no debe subirse al hosting público junto con index.html, ya que no aporta nada al visitante y solo ocupa espacio. Si haces cambios grandes en index.html (agregar o quitar líneas), estos números de línea se corren y hay que volver a ubicarlos con Ctrl+F buscando por el nombre de clase (ej. <code>top-bar-avatar</code>) en vez de por número.
+        </div>
+    </div>
+
+</div>
+
+<script>
+    async function sha256(text) {
+        const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+        return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    const STORED_USER = 'xpecther@gmail.com';
+    const STORED_HASH = 'f252ca5a3225cc1bc8ee1e829fee255b79b2e39c71dc484c4155c65737c48721';
+    const userInput = document.getElementById('gate-user');
+    const passInput = document.getElementById('gate-pass');
+    const errorMsg = document.getElementById('gate-error');
+
+    async function tryUnlock() {
+        const userOk = userInput.value.trim().toLowerCase() === STORED_USER;
+        const hash = await sha256(passInput.value.trim());
+        if (userOk && hash === STORED_HASH) {
+            document.getElementById('gate').style.display = 'none';
+            document.getElementById('doc').style.display = 'block';
+        } else {
+            errorMsg.textContent = 'Usuario o contraseña incorrectos.';
+        }
+    }
+
+    document.getElementById('gate-btn').addEventListener('click', tryUnlock);
+    passInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryUnlock(); });
+    userInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryUnlock(); });
+</script>
+
+</body>
+</html>
